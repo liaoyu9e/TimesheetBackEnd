@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.authright.demo.model;
 
 public class WeekTime {
     private int Mon;

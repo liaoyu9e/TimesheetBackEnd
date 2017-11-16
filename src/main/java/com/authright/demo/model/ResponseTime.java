@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.authright.demo.model;
 
 public class ResponseTime {
     private String userID;
