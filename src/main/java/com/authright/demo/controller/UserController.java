@@ -18,13 +18,13 @@ public class UserController {
     }
 
     @RequestMapping("/{username}")
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER') OR hasRole('ROLE_ADMIN')")
     public User getUserByUsername(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER') OR hasRole('ROLE_ADMIN')")
     public String deleteUserByUsername(@RequestBody String username) {
         User user = userService.getUserByUsername(username);
         if (user == null) return "Cannot find username " + username;

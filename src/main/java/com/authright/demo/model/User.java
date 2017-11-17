@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"userId", "username"})})
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
 public class User implements Serializable, UserDetails{
     private static final long serialVersionUID = -1665825733342105614L;
 
@@ -23,7 +23,7 @@ public class User implements Serializable, UserDetails{
     private String lastName;
     private String email;
 
-    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date joinDate;
     private String username;
     private String password;
@@ -31,6 +31,18 @@ public class User implements Serializable, UserDetails{
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Contract> contracts = new HashSet<>();
+
+    public Set<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        this.contracts = contracts;
+    }
 
     public Long getUserId() {
         return userId;

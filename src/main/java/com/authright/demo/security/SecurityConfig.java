@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -23,12 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserSecurityService userSecurityService;
 
+    @Autowired
+    private MyAuthenticationEntryPoint myAuthenticationEntryPoint;
+
     private BCryptPasswordEncoder passwordEncoder(){
         return SecurityUtility.passwordEncoder();
     }
 
     private static final String[] PUBLIC_MATCHER = {
-            "/user"
+            "/user","/access-denied"
     };
 
     @Override
@@ -38,7 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").and()
                 .logout().logoutSuccessUrl("/app-logout")
-                .permitAll();
+                .permitAll()
+                .and().exceptionHandling()
+                .authenticationEntryPoint(myAuthenticationEntryPoint) ;
     }
 
     @Autowired

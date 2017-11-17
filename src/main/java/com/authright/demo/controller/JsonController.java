@@ -1,8 +1,6 @@
 package com.authright.demo.controller;
 
-import com.authright.demo.model.ResponseTime;
 import com.authright.demo.model.User;
-import com.authright.demo.model.UserTime;
 import com.authright.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +12,9 @@ public class JsonController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/addtimesheet", method = RequestMethod.POST)
-    public ResponseTime update(@RequestBody UserTime userTime) {
-        ResponseTime rt = new ResponseTime(userTime.getUserID(), "Success");
-        return rt;
+    @RequestMapping("/access-denied")
+    public String accessDenied() {
+        return "Access denied! LOL! ^_^";
     }
 
     @RequestMapping("/app-logout")
