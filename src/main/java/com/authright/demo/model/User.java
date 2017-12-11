@@ -26,7 +26,9 @@ public class User implements Serializable, UserDetails{
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date joinDate;
     private String username;
+    @JsonIgnore
     private String password;
+    private boolean enabled = true;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
@@ -35,6 +37,9 @@ public class User implements Serializable, UserDetails{
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Contract> contracts = new HashSet<>();
+
+    public User() {
+    }
 
     public Set<Contract> getContracts() {
         return contracts;
@@ -137,6 +142,10 @@ public class User implements Serializable, UserDetails{
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

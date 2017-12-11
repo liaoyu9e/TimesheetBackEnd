@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private static final String[] PUBLIC_MATCHER = {
-            "/user","/access-denied"
+            "/user","/access-denied","/update"
     };
 
     @Override

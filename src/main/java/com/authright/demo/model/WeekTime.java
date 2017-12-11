@@ -17,10 +17,10 @@ public class WeekTime implements Serializable{
     private Long weekId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "contract_id")
     private Contract contract;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date mondayDate;
 
     private int monday;
@@ -33,6 +33,9 @@ public class WeekTime implements Serializable{
 
     private boolean isApproved;
     private boolean submitted;
+
+    public WeekTime() {
+    }
 
     public Long getWeekId() {
         return weekId;
