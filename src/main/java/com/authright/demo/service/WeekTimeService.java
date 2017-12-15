@@ -1,7 +1,7 @@
 package com.authright.demo.service;
 
-import com.authright.demo.model.User;
-import com.authright.demo.model.WeekTime;
+import com.authright.demo.entity.User;
+import com.authright.demo.entity.WeekTime;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.authright.demo.model;
+package com.authright.demo.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -17,7 +17,6 @@ public class WeekTime implements Serializable{
     private Long weekId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "contract_id")
     private Contract contract;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

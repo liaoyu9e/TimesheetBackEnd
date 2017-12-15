@@ -1,10 +1,10 @@
-package com.authright.demo.model;
+package com.authright.demo.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user_role")
+@Table(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "role_id"}))
 public class UserRole implements Serializable{
     private static final long serialVersionUID = -2817532658821630390L;
 

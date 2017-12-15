@@ -1,8 +1,8 @@
 package com.authright.demo.service.implement;
 
-import com.authright.demo.model.Role;
-import com.authright.demo.model.User;
-import com.authright.demo.model.UserRole;
+import com.authright.demo.entity.Role;
+import com.authright.demo.entity.User;
+import com.authright.demo.entity.UserRole;
 import com.authright.demo.repository.UserRepository;
 import com.authright.demo.service.UserService;
 import com.authright.demo.utility.SecurityUtility;
@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Service
@@ -29,11 +27,12 @@ public class UserServiceImp implements UserService {
         if (localUser != null){
             LOG.info("User with username {} already exist. Please select another one!", user.getUsername());
         }else{
-            Set<UserRole> userRoles = new HashSet<>();
-            Role localRole = new Role();
-            localRole.setRoleId(2);
-            userRoles.add(new UserRole(user, localRole));
-            user.getUserRoles().addAll(userRoles);
+            Role roleOfUser = new Role();
+            roleOfUser.setRoleId(1);
+//            roleOfUser.setName("ROLE_USER");
+            UserRole userRole = new UserRole(user, roleOfUser);
+            user.getUserRoles().add(userRole);
+            roleOfUser.getUserRoles().add(userRole);
 
             Date today = new Date();
             user.setJoinDate(today);

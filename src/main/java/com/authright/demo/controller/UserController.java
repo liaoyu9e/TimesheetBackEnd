@@ -1,6 +1,6 @@
 package com.authright.demo.controller;
 
-import com.authright.demo.model.User;
+import com.authright.demo.entity.User;
 import com.authright.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

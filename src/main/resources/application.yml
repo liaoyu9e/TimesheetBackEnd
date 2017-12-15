@@ -1,0 +1,17 @@
+spring.datasource:
+  url: "jdbc:mysql://localhost:3306/hrmdata"
+  username: "user"
+  password: "1234"
+  testWhileIdle: true
+  validationQuery: "SELECT 1"
+
+spring.jpa:
+  hibernate.ddl-auto: "update"
+  show-sql: false
+  properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+demo.security.jwt:
+  tokenExpirationTime: 10 # Number of minutes
+  refreshTokenExpTime: 60 # Minutes
+  tokenIssuer: "http://www.authright.com"
+  tokenSigningKey: "xm8EV6Hy5RMFK4EEACIDAwQus"

@@ -1,4 +1,4 @@
-package com.authright.demo.model;
+package com.authright.demo.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

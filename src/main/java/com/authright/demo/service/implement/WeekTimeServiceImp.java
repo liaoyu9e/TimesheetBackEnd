@@ -1,8 +1,8 @@
 package com.authright.demo.service.implement;
 
-import com.authright.demo.model.Contract;
-import com.authright.demo.model.User;
-import com.authright.demo.model.WeekTime;
+import com.authright.demo.entity.Contract;
+import com.authright.demo.entity.User;
+import com.authright.demo.entity.WeekTime;
 import com.authright.demo.repository.ContractRepository;
 import com.authright.demo.repository.WeekTimeRepository;
 import com.authright.demo.service.WeekTimeService;
@@ -64,10 +64,11 @@ public class WeekTimeServiceImp implements WeekTimeService {
         List<WeekTime> weekTimeList = new ArrayList<WeekTime>();
         Date now = new Date();
         for(Contract contract : contractList){
-            weekTimeList.addAll(weekTimeRepository.getWeekTimesByContract(contract));
+            List<WeekTime> weekTimesInThisContract = weekTimeRepository.getWeekTimesByContract(contract);
+            weekTimeList.addAll(weekTimesInThisContract);
             Date startDate = contract.getStartDate();
             Date latestMondayDate = new Date(startDate.getTime());
-            for(WeekTime weekTime : weekTimeList){
+            for(WeekTime weekTime : weekTimesInThisContract){
                 if(latestMondayDate.before(weekTime.getMondayDate()))
                     latestMondayDate = weekTime.getMondayDate();
             }

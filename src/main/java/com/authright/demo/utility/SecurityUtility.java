@@ -10,6 +10,7 @@ import java.util.Random;
 @Component
 public class SecurityUtility {
     private static final String SALT = "salt";
+    public static final String ROLE_REFRESH_TOKEN = "ROLE_USER";
 
     @Bean
     public static BCryptPasswordEncoder passwordEncoder(){

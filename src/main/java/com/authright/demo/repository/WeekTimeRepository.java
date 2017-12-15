@@ -1,7 +1,7 @@
 package com.authright.demo.repository;
 
-import com.authright.demo.model.Contract;
-import com.authright.demo.model.WeekTime;
+import com.authright.demo.entity.Contract;
+import com.authright.demo.entity.WeekTime;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;

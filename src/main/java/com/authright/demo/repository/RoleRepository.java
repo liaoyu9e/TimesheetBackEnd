@@ -1,11 +1,11 @@
 package com.authright.demo.repository;
 
-import com.authright.demo.model.Role;
+import com.authright.demo.entity.Role;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 
 @Transactional
-public interface RoleRepository extends CrudRepository<Role, Long> {
+public interface RoleRepository extends CrudRepository<Role, Integer> {
 
 }

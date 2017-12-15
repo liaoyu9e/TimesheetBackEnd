@@ -1,8 +1,8 @@
 package com.authright.demo.service;
 
 
-import com.authright.demo.model.Contract;
-import com.authright.demo.model.User;
+import com.authright.demo.entity.Contract;
+import com.authright.demo.entity.User;
 
 import java.util.List;
 

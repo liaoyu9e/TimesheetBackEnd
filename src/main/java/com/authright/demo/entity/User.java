@@ -1,4 +1,4 @@
-package com.authright.demo.model;
+package com.authright.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,7 +26,6 @@ public class User implements Serializable, UserDetails{
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date joinDate;
     private String username;
-    @JsonIgnore
     private String password;
     private boolean enabled = true;
 

@@ -1,4 +1,4 @@
-package com.authright.demo.model;
+package com.authright.demo.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 

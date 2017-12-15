@@ -1,4 +1,4 @@
-package com.authright.demo.model;
+package com.authright.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,9 +17,11 @@ public class Contract implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long contractId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -46,12 +48,12 @@ public class Contract implements Serializable{
     public Contract() {
     }
 
-    public Long getContractId() {
-        return contractId;
+    public Long getId() {
+        return id;
     }
 
-    public void setContractId(Long contractId) {
-        this.contractId = contractId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {
