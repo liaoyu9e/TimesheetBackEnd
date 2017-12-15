@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.security.SecureRandom;
 import java.util.Random;
 
+//Utilities of password encoder
 @Component
 public class SecurityUtility {
     private static final String SALT = "salt";

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+//user test, reserve for admin user control
 @RestController
 @RequestMapping("/user")
 public class UserController {

@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+//Factory class that should be always used to create JWTs.
 @Component
 public class JwtTokenFactory {
     private JwtSettings settings;

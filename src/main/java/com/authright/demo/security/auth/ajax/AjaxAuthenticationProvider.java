@@ -21,6 +21,7 @@ import org.springframework.util.Assert;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//provide login filter's customized authentication method
 @Component
 public class AjaxAuthenticationProvider implements AuthenticationProvider{
     private final BCryptPasswordEncoder encoder = SecurityUtility.passwordEncoder();

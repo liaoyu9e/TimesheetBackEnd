@@ -2,6 +2,7 @@ package com.authright.demo.utility;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
+//enumeration for error code
 public enum ErrorCode {
     GLOBAL(2),
     AUTHENTICATION(10),

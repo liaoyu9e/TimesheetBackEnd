@@ -3,6 +3,7 @@ package com.authright.demo.security.model;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+//Customized configurations in appliaction.properties or yml
 @Configuration
 @ConfigurationProperties(prefix = "demo.security.jwt")
 public class JwtSettings {

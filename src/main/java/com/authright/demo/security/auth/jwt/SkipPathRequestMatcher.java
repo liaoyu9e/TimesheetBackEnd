@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//used for skip login enter point and refresh token enter point
 public class SkipPathRequestMatcher implements RequestMatcher {
     private OrRequestMatcher matchers;
     private RequestMatcher processingMatcher;

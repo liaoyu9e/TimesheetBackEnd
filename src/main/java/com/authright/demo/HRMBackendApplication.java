@@ -24,6 +24,7 @@ public class HRMBackendApplication implements CommandLineRunner{
 		SpringApplication.run(HRMBackendApplication.class, args);
 	}
 
+	//initial roles and users for test
 	@Override
 	public void run(String... strings) {
 		User user = new User();

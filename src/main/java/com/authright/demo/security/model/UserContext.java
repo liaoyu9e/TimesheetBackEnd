@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
 
+//Username with corresponding authorities
 public class UserContext {
     private final String username;
     private final List<GrantedAuthority> authorities;

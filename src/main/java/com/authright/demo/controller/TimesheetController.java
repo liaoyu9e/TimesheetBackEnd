@@ -6,9 +6,8 @@ import com.authright.demo.service.WeekTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-//import java.security.Principal;
 
-
+//timesheet request handler
 @RestController("/timesheet")
 public class TimesheetController {
 

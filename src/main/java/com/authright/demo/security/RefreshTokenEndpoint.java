@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+//Refresh token request handler
 @RestController
 public class RefreshTokenEndpoint {
     @Autowired
