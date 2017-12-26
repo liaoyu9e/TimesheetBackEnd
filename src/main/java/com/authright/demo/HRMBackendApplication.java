@@ -1,14 +1,23 @@
 package com.authright.demo;
 
-import com.authright.demo.entity.Role;
-import com.authright.demo.entity.User;
-import com.authright.demo.entity.UserRole;
+import com.authright.demo.entity.*;
 import com.authright.demo.repository.RoleRepository;
+import com.authright.demo.service.ContractService;
 import com.authright.demo.service.UserService;
+import com.authright.demo.service.WeekTimeService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class HRMBackendApplication implements CommandLineRunner{
@@ -18,6 +27,12 @@ public class HRMBackendApplication implements CommandLineRunner{
 
 	@Autowired
 	private RoleRepository roleRepository;
+
+	@Autowired
+	private ContractService contractService;
+
+	@Autowired
+	private WeekTimeService weekTimeService;
 
 	public static void main(String[] args) {
 
@@ -75,5 +90,35 @@ public class HRMBackendApplication implements CommandLineRunner{
 		user.setEmail("chen.hua@authright.com");
 		user.getUserRoles().clear();
 		userService.createUser(user);
+		if(!contractService.getContractSetByUser(user).isEmpty()){
+			return;
+		}
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			List<Contract> contracts = mapper.readValue(new File("src/main/resources/static/Contracts.json"), new TypeReference<List<Contract>>(){});
+			for(Contract contract : contracts){
+				contract.setUser(user);
+				contractService.addContract(contract);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Set<Contract> contractSet = contractService.getContractSetByUser(user);
+		ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+		try {
+			writer.writeValue(new File("src/main/resources/static/ContractSet.json"), contractSet);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Set<WeekTime> weekTimeSet = weekTimeService.getWeekTimeSetByUser(user);
+		try {
+			writer.writeValue(new File("src/main/resources/static/WeekTimeSet.json"), weekTimeSet);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

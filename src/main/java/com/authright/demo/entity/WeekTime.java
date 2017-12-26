@@ -2,8 +2,10 @@ package com.authright.demo.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,8 +19,13 @@ public class WeekTime implements Serializable{
     private Long weekId;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     private Contract contract;
 
+    @Transient
+    private Long contractId;
+
+    @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date mondayDate;
 
@@ -29,6 +36,9 @@ public class WeekTime implements Serializable{
     private int friday;
     private int saturday;
     private int sunday;
+
+    @Column(columnDefinition = "text")
+    private String note;
 
     private boolean isApproved;
     private boolean submitted;
@@ -50,6 +60,14 @@ public class WeekTime implements Serializable{
 
     public void setContract(Contract contract) {
         this.contract = contract;
+    }
+
+    public Long getContractId() {
+        return contractId;
+    }
+
+    public void setContractId(Long contractId) {
+        this.contractId = contractId;
     }
 
     public Date getMondayDate() {
@@ -114,6 +132,14 @@ public class WeekTime implements Serializable{
 
     public void setSunday(int sunday) {
         this.sunday = sunday;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public boolean isApproved() {

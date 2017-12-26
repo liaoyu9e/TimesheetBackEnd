@@ -4,10 +4,12 @@ import com.authright.demo.entity.Contract;
 import com.authright.demo.entity.User;
 import com.authright.demo.repository.ContractRepository;
 import com.authright.demo.service.ContractService;
+import com.authright.demo.service.WeekTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ContractServiceImp implements ContractService {
@@ -15,14 +17,28 @@ public class ContractServiceImp implements ContractService {
     @Autowired
     private ContractRepository contractRepository;
 
+    @Autowired
+    private WeekTimeService weekTimeService;
+
+
+//    @Override
+//    public Contract getContractByCompanyNameAndUser(String companyName, User user) {
+//        return contractRepository.getContractByCompanyNameAndUser(companyName, user);
+//    }
 
     @Override
-    public Contract getContractByCompanyName(String companyName) {
-        return contractRepository.getContractByCompanyName(companyName);
+    public Set<Contract> getContractSetByUser(User user) {
+        Set<Contract> contractSet = contractRepository.getContractsByUser(user);
+        return contractSet;
     }
 
     @Override
-    public List<Contract> getContractListByUser(User user) {
-        return contractRepository.getContractsByUser(user);
+    public List<Contract> getContractListByCompanyName(String companyName) {
+        return contractRepository.getContractsByCompanyName(companyName);
+    }
+
+    @Override
+    public Contract addContract(Contract contract) {
+        return contractRepository.save(contract);
     }
 }

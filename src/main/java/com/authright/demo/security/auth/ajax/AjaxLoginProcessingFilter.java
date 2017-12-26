@@ -39,7 +39,7 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         //make sure it's a ajax call with POST method
-        if(!HttpMethod.POST.name().equals(request.getMethod()) || !WebUtil.isAjax(request)) {
+        if(!HttpMethod.POST.name().equals(request.getMethod()) /*|| !WebUtil.isAjax(request)*/) {
             if(logger.isDebugEnabled()) {
                 logger.debug("Authentication method not supported. Request method: " + request.getMethod());
             }
@@ -47,7 +47,7 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
         }
         logger.info("mapper reading value...");
         LoginRequest loginRequest = mapper.readValue(request.getReader(), LoginRequest.class);
-
+        logger.info("User " + loginRequest.getUsername() + " is trying to login");
         if(StringUtils.isBlank(loginRequest.getUsername()) || StringUtils.isBlank(loginRequest.getPassword())) {
             throw new AuthenticationServiceException("Username or Password not provided");
         }
@@ -60,11 +60,13 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication auth) throws IOException, ServletException {
         successHandler.onAuthenticationSuccess(request, response, auth);
+        logger.info("Successfully logged in");
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failedException) throws IOException, ServletException {
         SecurityContextHolder.clearContext();
         failureHandler.onAuthenticationFailure(request, response, failedException);
+        logger.warn("Log in failed");
     }
 }

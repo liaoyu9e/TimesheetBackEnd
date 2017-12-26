@@ -5,9 +5,9 @@ import com.authright.demo.entity.WeekTime;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
-import java.util.List;
+import java.util.Set;
 
 @Transactional
 public interface WeekTimeRepository extends CrudRepository<WeekTime, Long>{
-    List<WeekTime> getWeekTimesByContract(Contract contract);
+    Set<WeekTime> getWeekTimesByContract(Contract contract);
 }

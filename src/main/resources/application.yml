@@ -11,7 +11,7 @@ spring.jpa: # JPA configuration
   properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
 
 demo.security.jwt: # Customized JWT token properties
-  tokenExpirationTime: 10 # Number of minutes
-  refreshTokenExpTime: 60 # Minutes
+  tokenExpirationTime: 1 # Number of minutes
+  refreshTokenExpTime: 30 # Minutes
   tokenIssuer: "http://www.authright.com"
   tokenSigningKey: "xm8EV6Hy5RMFK4EEACIDAwQus"

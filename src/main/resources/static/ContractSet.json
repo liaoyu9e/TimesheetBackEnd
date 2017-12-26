@@ -1,0 +1,23 @@
+[ {
+  "id" : 1,
+  "companyName" : "Marlabs Inc.",
+  "projectName" : "Big Date System",
+  "startDate" : "2017-11-14",
+  "endDate" : "2017-12-01",
+  "hourlyRate" : 7,
+  "content" : "This is the content of contract of Marlabs Inc.",
+  "contactName" : "Xinmei Wen",
+  "contactPhoneNumber" : "617-xxx-xxxx",
+  "contactEmail" : "xinmei.wen@marlabs.com"
+}, {
+  "id" : 2,
+  "companyName" : "Authright Inc.",
+  "projectName" : "HRM System",
+  "startDate" : "2017-12-20",
+  "endDate" : null,
+  "hourlyRate" : 10,
+  "content" : "This is the content of contract of Authright Inc.",
+  "contactName" : "Victor Cao",
+  "contactPhoneNumber" : "617-xxx-xxxx",
+  "contactEmail" : "victor.cao@authright.com"
+} ]

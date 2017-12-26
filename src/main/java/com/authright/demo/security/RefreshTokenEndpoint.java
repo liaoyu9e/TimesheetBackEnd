@@ -11,6 +11,8 @@ import com.authright.demo.security.model.token.JwtTokenFactory;
 import com.authright.demo.security.model.token.RawAccessJwtToken;
 import com.authright.demo.security.model.token.RefreshToken;
 import com.authright.demo.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
@@ -35,6 +37,8 @@ import java.util.stream.Collectors;
 //Refresh token request handler
 @RestController
 public class RefreshTokenEndpoint {
+    private static final Logger logger = LoggerFactory.getLogger(RefreshTokenEndpoint.class);
+
     @Autowired
     private JwtTokenFactory tokenFactory;
 
@@ -88,7 +92,7 @@ public class RefreshTokenEndpoint {
         Map<String, String> tokenMap = new HashMap<String, String>();
         tokenMap.put("token", accessToken.getToken());
         tokenMap.put("refreshToken", newRefreshToken.getToken());
-
+        logger.info("The access token of User " + user.getUsername() + " refreshed successfully");
         return tokenMap;
     }
 

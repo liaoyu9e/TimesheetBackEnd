@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"project_name"})})
 public class Contract implements Serializable{
 
     private static final long serialVersionUID = 4363943773436358164L;
@@ -30,6 +31,9 @@ public class Contract implements Serializable{
 
     @NotNull
     private String companyName;
+
+    @Column(name = "project_name")
+    private String projectName;
 
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -80,6 +84,14 @@ public class Contract implements Serializable{
         this.companyName = companyName;
     }
 
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
@@ -124,8 +136,8 @@ public class Contract implements Serializable{
         return contactPhoneNumber;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactPhoneNumber = contactNumber;
+    public void setContactPhoneNumber(String contactPhoneNumber) {
+        this.contactPhoneNumber = contactPhoneNumber;
     }
 
     public String getContactEmail() {
