@@ -41,4 +41,9 @@ public class ContractServiceImp implements ContractService {
     public Contract addContract(Contract contract) {
         return contractRepository.save(contract);
     }
+
+    @Override
+    public Contract findContractById(Long id) {
+        return contractRepository.findOne(id);
+    }
 }

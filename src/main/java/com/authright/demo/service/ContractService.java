@@ -12,4 +12,5 @@ public interface ContractService {
     Set<Contract> getContractSetByUser(User user);
     List<Contract> getContractListByCompanyName(String companyName);
     Contract addContract(Contract contract);
+    Contract findContractById(Long id);
 }

@@ -53,12 +53,12 @@ public class TimesheetController {
 //    }
 
     @RequestMapping("/fetchTimesheetInfo")
-    public ResponseEntity fetchTimesheetInfo(){
+    public Map<String, Set> fetchTimesheetInfo(){
         JwtAuthenticationToken auth = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByUsername(((UserContext) auth.getPrincipal()).getUsername());
         Map<String, Set> map = new HashMap<String, Set>();
         map.put("contracts", contractService.getContractSetByUser(user));
         map.put("weekTimes", weekTimeService.getWeekTimeSetByUser(user));
-        return new ResponseEntity(map, HttpStatus.OK);
+        return map;
     }
 }

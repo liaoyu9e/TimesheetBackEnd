@@ -23,14 +23,18 @@ public class WeekTimeServiceImp implements WeekTimeService {
 
     @Override
     public WeekTime updateWeektime(WeekTime weekTime) {
-        weekTimeRepository.save(weekTime);
+        Contract contract = contractService.findContractById(weekTime.getContractId());
+        weekTime.setContract(contract);
+        weekTime = weekTimeRepository.save(weekTime);
         return weekTime;
     }
 
     @Override
     public WeekTime submitWeektime(WeekTime weekTime) {
+        Contract contract = contractService.findContractById(weekTime.getContractId());
+        weekTime.setContract(contract);
         weekTime.setSubmitted(true);
-        weekTimeRepository.save(weekTime);
+        weekTime = weekTimeRepository.save(weekTime);
         return weekTime;
     }
 
