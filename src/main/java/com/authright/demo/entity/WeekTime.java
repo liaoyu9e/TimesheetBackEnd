@@ -26,7 +26,7 @@ public class WeekTime implements Serializable{
     private Long contractId;
 
     @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date mondayDate;
 
     private int monday;

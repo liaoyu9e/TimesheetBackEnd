@@ -1,7 +1,7 @@
 [ {
-  "weekId" : 1,
-  "contractId" : 1,
-  "mondayDate" : "2017-12-12",
+  "weekId" : 9,
+  "contractId" : 4,
+  "mondayDate" : "2017-12-25 05:00 UTC",
   "monday" : 0,
   "tuesday" : 0,
   "wednesday" : 0,
@@ -13,9 +13,9 @@
   "submitted" : false,
   "approved" : false
 }, {
-  "weekId" : 2,
-  "contractId" : 1,
-  "mondayDate" : "2017-12-19",
+  "weekId" : 6,
+  "contractId" : 3,
+  "mondayDate" : "2017-12-11 05:00 UTC",
   "monday" : 0,
   "tuesday" : 0,
   "wednesday" : 0,
@@ -27,9 +27,9 @@
   "submitted" : false,
   "approved" : false
 }, {
-  "weekId" : 3,
-  "contractId" : 2,
-  "mondayDate" : "2017-12-19",
+  "weekId" : 7,
+  "contractId" : 3,
+  "mondayDate" : "2017-12-18 05:00 UTC",
   "monday" : 0,
   "tuesday" : 0,
   "wednesday" : 0,
@@ -41,9 +41,23 @@
   "submitted" : false,
   "approved" : false
 }, {
-  "weekId" : 4,
-  "contractId" : 2,
-  "mondayDate" : "2017-12-26",
+  "weekId" : 8,
+  "contractId" : 4,
+  "mondayDate" : "2017-12-18 05:00 UTC",
+  "monday" : 0,
+  "tuesday" : 0,
+  "wednesday" : 0,
+  "thursday" : 0,
+  "friday" : 0,
+  "saturday" : 0,
+  "sunday" : 0,
+  "note" : null,
+  "submitted" : false,
+  "approved" : false
+}, {
+  "weekId" : 10,
+  "contractId" : 4,
+  "mondayDate" : "2018-01-01 05:00 UTC",
   "monday" : 0,
   "tuesday" : 0,
   "wednesday" : 0,

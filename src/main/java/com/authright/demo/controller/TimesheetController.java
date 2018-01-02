@@ -14,9 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 //timesheet request handler
@@ -53,12 +51,20 @@ public class TimesheetController {
 //    }
 
     @RequestMapping("/fetchTimesheetInfo")
-    public Map<String, Set> fetchTimesheetInfo(){
+    public Map<String, Collection> fetchTimesheetInfo(){
         JwtAuthenticationToken auth = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByUsername(((UserContext) auth.getPrincipal()).getUsername());
-        Map<String, Set> map = new HashMap<String, Set>();
+        Map<String, Collection> map = new HashMap<String, Collection>();
+        List<WeekTime> weekTimeList = new ArrayList<WeekTime>(weekTimeService.getWeekTimeSetByUser(user));
+        weekTimeList.sort(new Comparator<WeekTime>() {
+            @Override
+            public int compare(WeekTime o1, WeekTime o2) {
+                return (int) (o1.getWeekId() - o2.getWeekId());
+            }
+        });
+
         map.put("contracts", contractService.getContractSetByUser(user));
-        map.put("weekTimes", weekTimeService.getWeekTimeSetByUser(user));
+        map.put("weekTimes", weekTimeList);
         return map;
     }
 }
