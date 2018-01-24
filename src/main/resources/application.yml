@@ -1,5 +1,5 @@
 spring.datasource: # Database information
-  url: "jdbc:mysql://localhost:3306/hrmdata"
+  url: "jdbc:mysql://localhost:3306/hrmdata?useSSL=false"
   username: "user"
   password: "1234"
   testWhileIdle: true
